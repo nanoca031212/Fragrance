@@ -249,8 +249,8 @@ export function getProductStats() {
  * Formatar preço em libras
  */
 export function formatPrice(price: string | number): string {
-  const numPrice = typeof price === 'string' ? parseFloat(price.replace('£', '').replace(',', '') || '0') : price;
-  return `£${numPrice.toFixed(2)}`;
+  const numPrice = typeof price === 'string' ? parseFloat(price.replace('$', '').replace(',', '') || '0') : price;
+  return `$${numPrice.toFixed(2)}`;
 }
 
 /**

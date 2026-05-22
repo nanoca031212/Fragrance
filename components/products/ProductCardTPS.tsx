@@ -126,7 +126,7 @@ export default function ProductCardTPS({
       content_name: product.title,
       content_category: product.tags.join(","),
       value: parseFloat(product.price.regular.toString()),
-      currency: "GBP",
+      currency: "USD",
     });
   };
 
@@ -487,11 +487,11 @@ export default function ProductCardTPS({
               <div className="flex  flex-col-2 items-center justify-center gap-2 text-sm">
                 <div>
                   <span className="text-black uppercase text-2xl mt-1 font-semibold">
-                    £{formatPrice(product.price.regular)}
+                    ${formatPrice(product.price.regular)}
                   </span>
                 </div>
                 <span className="text-gray-700 line-through text-xs">
-                  £{formatPrice(product.price.original_price || 169.99)}
+                  ${formatPrice(product.price.original_price || 169.99)}
                 </span>
               </div>
             </div>

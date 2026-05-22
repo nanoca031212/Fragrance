@@ -1,7 +1,7 @@
 // Utilitários para integração com Utmfy
 
-// Taxa de conversão fixa de GBP para BRL
-const GBP_TO_BRL_RATE = 7.0;
+// Taxa de conversão fixa de USD para BRL
+const GBP_TO_BRL_RATE = 5.7;
 
 // ---------------------------------------------------------------------------
 // Deduplicação server-side: evita envio duplo para a mesma sessão.

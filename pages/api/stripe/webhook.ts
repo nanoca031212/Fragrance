@@ -153,7 +153,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             'https://fragancestps.shop';
 
           const purchaseValue = session.amount_total ? session.amount_total / 100 : 0;
-          const purchaseCurrency = session.currency?.toUpperCase() || 'GBP';
+          const purchaseCurrency = session.currency?.toUpperCase() || 'USD';
 
           // Facebook CAPI
           await sendCapiEvent({

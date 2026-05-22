@@ -79,7 +79,7 @@ export const sendTikTokCapiEvent = async (params: TikTokCapiEventParams) => {
     },
     properties: {
       contents: params.contentIds?.map(id => ({ content_id: id, content_type: params.contentType || 'product', quantity: 1 })),
-      currency: params.currency || 'GBP',
+      currency: params.currency || 'USD',
       value: params.value,
     }
   };

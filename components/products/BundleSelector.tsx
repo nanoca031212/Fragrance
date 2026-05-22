@@ -309,7 +309,7 @@ export default function BundleSelector({
                       {pack.id !== "single" && (
                         <div className="mt-1">
                           <span className="bg-[#532450] text-white text-[10px] font-bold px-2 py-0.5 tracking-wider rounded-sm">
-                            SAVE £{savings}
+                            SAVE ${savings}
                           </span>
                         </div>
                       )}
@@ -318,10 +318,10 @@ export default function BundleSelector({
 
                   <div className="text-right">
                     <div className="text-black font-black text-xl">
-                      £{pack.price.toFixed(2)}
+                      ${pack.price.toFixed(2)}
                     </div>
                     <div className="text-black/60 text-xs line-through">
-                      £{pack.originalPrice.toFixed(2)}
+                      ${pack.originalPrice.toFixed(2)}
                     </div>
                   </div>
                 </button>
@@ -416,7 +416,7 @@ export default function BundleSelector({
         >
           <img
             src="/images/IconLibra.svg"
-            alt="GBP"
+            alt="USD"
             width={28}
             height={28}
             className="brightness-0 invert"

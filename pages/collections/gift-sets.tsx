@@ -12,7 +12,7 @@ export default function GiftSetsPage({ products }: GiftSetsPageProps) {
     <BaseCollection 
       products={products}
       title="Gift Sets | Premium Fragrance Collections"
-      description="Shop our exclusive fragrance gift sets. Premium collections at £79.90 with fast UK delivery."
+      description="Shop our exclusive fragrance gift sets. Premium collections at $79.90 with fast UK delivery."
       filterFunction={(product) => product.tags.includes('gift-set')}
     />
   )

@@ -95,7 +95,7 @@ export default function PriceAnchoring({ correctAnswers, onBuyClick }: PriceAnch
   return (
     <div className="bg-white pt-4">
       <h1 className="text-center text-[#2c2c2c] text-3xl mt-5 font-bold font-sans mb-4">Congratulations! Your Exclusive Deal is Unlocked</h1>
-      <div className="flex justify-center mb-6"><span className="text-sm text-wrap text-center text-gray-500 px-4">You've successfully completed our quiz and secured a £{discount} discount on this exclusive online bundle.</span></div>
+      <div className="flex justify-center mb-6"><span className="text-sm text-wrap text-center text-gray-500 px-4">You've successfully completed our quiz and secured a ${discount} discount on this exclusive online bundle.</span></div>
 
 
       {/* New Temu-style Layout */}
@@ -138,10 +138,10 @@ export default function PriceAnchoring({ correctAnswers, onBuyClick }: PriceAnch
           <div className="flex-grow text-center md:text-left space-y-2">
             <h2 className="text-gray-500 text-xs font-bold uppercase tracking-widest">Your Quiz Reward</h2>
             <div className="items-baseline flex-col col-1 justify-center md:justify-start gap-3">
-              <span className="text-4xl font-extrabold text-black tracking-tight border-b-2 border-red-500">£{finalPrice.toFixed(2)}</span>
-              <span className="text-x text-gray-400 line-through font-medium pl-2 border-b-2 border-black pb-1">/£{selectedKitData.originalPrice.toFixed(2)}</span>
+              <span className="text-4xl font-extrabold text-black tracking-tight border-b-2 border-red-500">${finalPrice.toFixed(2)}</span>
+              <span className="text-x text-gray-400 line-through font-medium pl-2 border-b-2 border-black pb-1">/${selectedKitData.originalPrice.toFixed(2)}</span>
               <div className="flex flex-col mt-4">
-                <span className="text-xs text-green-600 font-bold bg-green-50 px-2 py-0.5 rounded-full inline-block">SAVE £{selectedKitData.savings.toFixed(2)}</span>
+                <span className="text-xs text-green-600 font-bold bg-green-50 px-2 py-0.5 rounded-full inline-block">SAVE ${selectedKitData.savings.toFixed(2)}</span>
               </div>
             </div>
             <p className="text-gray-600 text-sm font-medium">3 Luxury Perfumes – Exclusive Online Kit's</p>

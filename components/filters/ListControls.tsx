@@ -141,9 +141,9 @@ export default function ListControls({
       label: brand,
     })),
     Price: [
-      { value: "under-50", label: "Under £50" },
-      { value: "50-100", label: "£50 - £100" },
-      { value: "over-100", label: "Over £100" },
+      { value: "under-50", label: "Under $50" },
+      { value: "50-100", label: "$50 - $100" },
+      { value: "over-100", label: "Over $100" },
     ],
     Size: [
       { value: "30ml", label: "30ML" },

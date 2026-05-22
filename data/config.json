@@ -1,7 +1,7 @@
 {
   "site": {
     "name": "Premium Fragrances UK",
-    "currency": "GBP",
+    "currency": "USD",
     "tax_rate": 0.2
   },
   "features": {

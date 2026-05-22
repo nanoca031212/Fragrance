@@ -104,8 +104,8 @@ export default function ShoppingBag({ isOpen, onClose }: ShoppingBagProps) {
                   <h3 className="text-sm font-medium truncate">{item.title}</h3>
                   <p className="text-xs text-gray-500 truncate">{item.subtitle}</p>
                   <div className="flex items-center gap-2 mt-1">
-                    <p className="text-sm font-bold text-black">£{(item.price * item.quantity).toFixed(2)}</p>
-                    <span className="text-xs line-through text-gray-400">£{((item.originalPrice || 169.99) * item.quantity).toFixed(2)}</span>
+                    <p className="text-sm font-bold text-black">${(item.price * item.quantity).toFixed(2)}</p>
+                    <span className="text-xs line-through text-gray-400">${((item.originalPrice || 169.99) * item.quantity).toFixed(2)}</span>
                   </div>
 
                   {/* Quantity Controls */}
@@ -144,15 +144,15 @@ export default function ShoppingBag({ isOpen, onClose }: ShoppingBagProps) {
           <div className="mt-4 space-y-1.5">
             <div className="flex justify-between items-center text-xs text-gray-500">
               <span>Total</span>
-              <span className="line-through">£{totalOriginal.toFixed(2)}</span>
+              <span className="line-through">${totalOriginal.toFixed(2)}</span>
             </div>
             <div className="flex justify-between items-center text-xs text-black font-medium font-sans">
               <span>Bundle savings</span>
-              <span>-£{(totalOriginal - total).toFixed(2)}</span>
+              <span>-${(totalOriginal - total).toFixed(2)}</span>
             </div>
             <div className="flex justify-between items-center pt-2 mt-2 border-t border-gray-100">
               <span className="text-sm font-bold uppercase tracking-tight">Final Price</span>
-              <span className="text-xl font-bold text-gray-900">£{total.toFixed(2)}</span>
+              <span className="text-xl font-bold text-gray-900">${total.toFixed(2)}</span>
             </div>
           </div>
 
@@ -162,7 +162,7 @@ export default function ShoppingBag({ isOpen, onClose }: ShoppingBagProps) {
               ${items.length === 0 ? 'opacity-50 cursor-not-allowed' : 'hover:bg-gray-900 shadow-lg shadow-gray-200'}`}
             disabled={items.length === 0}
           >
-            CHECKOUT • £{total.toFixed(2)}
+            CHECKOUT • ${total.toFixed(2)}
           </button>
         </div>
       </div>

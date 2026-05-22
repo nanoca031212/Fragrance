@@ -251,11 +251,11 @@ export default function ProductPage({
                 <div className="flex items-center gap-2 whitespace-nowrap">
                   <span>Product code: {product.sku}</span>
                   <span>|</span>
-                  <span>RRP £{product.price.original_price || 169.99}</span>
+                  <span>RRP ${product.price.original_price || 169.99}</span>
                   <span>|</span>
                 </div>
                 <span className="text-[#666666]">
-                  £ {product.price.regular} PER 100ml
+                  $ {product.price.regular} PER 100ml
                 </span>
               </div>
             </div>
@@ -282,11 +282,11 @@ export default function ProductPage({
                   Multi-Brand Promotion. These premium fragrances, with UK
                   market prices up to{" "}
                   <span className="font-bold text-black line-through">
-                    £{product.price.original_price || 290.0}
+                    ${product.price.original_price || 290.0}
                   </span>
                   , are now available starting from just{" "}
                   <span className="font-bold text-black">
-                    £{product.price.regular}
+                    ${product.price.regular}
                   </span>
                   , offering you a remarkable savings.
                 </p>
@@ -344,7 +344,7 @@ export default function ProductPage({
             {/* Discount Banner */}
             <div className="border border-black w-full font-bold text-center py-2 mb-4">
               <span className="font-bold  text-black">
-                Pick any 3 fragrances you love for only £69.99
+                Pick any 3 fragrances you love for only $69.99
               </span>
             </div>
 

@@ -42,9 +42,9 @@ export default function Document() {
               "name": "TPS UK",
               "description": "Premium fragrances and perfumes for the UK market",
               "url": process.env.NEXT_PUBLIC_SITE_URL,
-              "currenciesAccepted": "GBP",
+              "currenciesAccepted": "USD",
               "paymentAccepted": ["Credit Card", "Debit Card", "PayPal"],
-              "priceRange": "£10-£200",
+              "priceRange": "$10-$200",
               "address": {
                 "@type": "PostalAddress",
                 "addressCountry": "GB"

@@ -305,7 +305,7 @@ const SuccessNotification = ({
         </div>
         <div>
           <p className="font-bold text-lg">Congratulations! 🎉</p>
-          <p className="text-sm opacity-90">You've earned a £20 discount!</p>
+          <p className="text-sm opacity-90">You've earned a $20 discount!</p>
         </div>
         <button
           onClick={onClose}
@@ -1240,9 +1240,9 @@ const DiscountProgressBar = ({
         <div className="flex justify-between items-center">
           <span className="text-sm text-gray-600">Discount progress:</span>
           <div>
-            <span className="font-semibold text-black">£{discount} /</span>
+            <span className="font-semibold text-black">${discount} /</span>
             <span className="font-semibold text-red-600">
-              £{maxDiscount.toFixed(2)}
+              ${maxDiscount.toFixed(2)}
             </span>
           </div>
         </div>

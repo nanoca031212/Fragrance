@@ -421,13 +421,13 @@ export default function BaseCollection({
                   ? "Continue adicionando!"
                   : selectedCount === 3
                     ? "🎉 Discount Unlocked!"
-                    : "Mix & match — 3 perfumes por £69.99"}
+                    : "Mix & match — 3 perfumes por $69.99"}
             </h5>
             <div className="text-sm text-gray-500 mt-1">
               {selectedCount < 3
                 ? `${3 - selectedCount} perfumes missing. Unlock the discount.`
                 : selectedCount === 3
-                  ? `Congratulations, you've unlocked the discount 3 perfumes for £69.99. Select more 3 perfumes to unlock the maximum discount.`
+                  ? `Congratulations, you've unlocked the discount 3 perfumes for $69.99. Select more 3 perfumes to unlock the maximum discount.`
                   : selectedCount < 6
                     ? `${6 - selectedCount} more perfume(s) to unlock the maximum discount.`
                     : `Congratulations, you've unlocked the maximum discount!`}

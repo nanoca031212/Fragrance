@@ -149,7 +149,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ isOpen, onClose, products }) => {
                   {product.title}
                 </p>
                 <p className="text-sm font-bold text-black font-sans">
-                   £{typeof product.price.regular === 'string' ? parseFloat(product.price.regular).toFixed(2) : product.price.regular.toFixed(2)}
+                   ${typeof product.price.regular === 'string' ? parseFloat(product.price.regular).toFixed(2) : product.price.regular.toFixed(2)}
                 </p>
               </Link>
             ))}
@@ -196,9 +196,9 @@ const SearchBar: React.FC<SearchBarProps> = ({ isOpen, onClose, products }) => {
                     </h4>
                     <div className="flex items-center gap-2 pt-1 font-sans">
                       <p className="text-base font-bold text-black">
-                        £{typeof product.price.regular === 'string' ? parseFloat(product.price.regular).toFixed(2) : product.price.regular.toFixed(2)}
+                        ${typeof product.price.regular === 'string' ? parseFloat(product.price.regular).toFixed(2) : product.price.regular.toFixed(2)}
                       </p>
-                      <span className="text-xs text-gray-400 line-through">£169.99</span>
+                      <span className="text-xs text-gray-400 line-through">$169.99</span>
                     </div>
                   </div>
                 </Link>

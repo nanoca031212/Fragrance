@@ -56,7 +56,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
       return {
         price_data: {
-          currency: 'gbp',
+          currency: 'usd',
           product_data: {
             name: setName,
             metadata: {

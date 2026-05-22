@@ -12,7 +12,7 @@ export default function MensPage({ products }: MensPageProps) {
     <BaseCollection 
       products={products}
       title="Men's Perfume | Premium Fragrance Collections"
-      description="Shop our exclusive men's perfume collections. Premium fragrances at £79.90 with fast UK delivery."
+      description="Shop our exclusive men's perfume collections. Premium fragrances at $79.90 with fast UK delivery."
       filterFunction={(product) => product.tags.includes('men')}
     />
   )

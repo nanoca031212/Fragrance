@@ -129,7 +129,7 @@ export default function CheckoutPage() {
     // Rastrear InitiateCheckout com dados enriquecidos
     pixel.initiateCheckout({
       value: total,
-      currency: "GBP",
+      currency: "USD",
       content_ids: items.map((item) => item.id.toString()),
       num_items: items.length,
       content_type: "product",
@@ -210,10 +210,10 @@ export default function CheckoutPage() {
 
                   <div className="flex items-center gap-2 mt-1">
                     <span className="font-bold text-gray-900">
-                      £{item.price.toFixed(2)}
+                      ${item.price.toFixed(2)}
                     </span>
                     <span className="text-xs line-through text-gray-400">
-                      Was £{(item.originalPrice || 169.99).toFixed(2)}
+                      Was ${(item.originalPrice || 169.99).toFixed(2)}
                     </span>
                   </div>
                 </div>
@@ -240,7 +240,7 @@ export default function CheckoutPage() {
           <div className="mt-4 pt-4 space-y-2">
             <div className="flex justify-between items-center text-sm text-gray-600">
               <span>Subtotal (List Price)</span>
-              <span className="line-through">£{totalOriginal.toFixed(2)}</span>
+              <span className="line-through">${totalOriginal.toFixed(2)}</span>
             </div>
             <div className="flex justify-between items-center text-sm text-green-600 font-bold relative">
               <div className="flex items-center gap-1">
@@ -261,20 +261,20 @@ export default function CheckoutPage() {
                     <p className="text-[11px] leading-relaxed text-gray-600 font-normal">
                       Get 3 luxury 100ml fragrances for the price of one. This
                       exclusive bundle deal applies automatically at checkout,
-                      saving you over £120 compared to individual retail prices.
+                      saving you over $120 compared to individual retail prices.
                     </p>
                     <div className="absolute left-4 -bottom-1 w-2 h-2 bg-white border-r border-b border-gray-200 rotate-45"></div>
                   </div>
                 )}
               </div>
-              <span>-£{(totalOriginal - total).toFixed(2)}</span>
+              <span>-${(totalOriginal - total).toFixed(2)}</span>
             </div>
             <div className="flex justify-between items-center pt-2 border-t border-gray-100">
               <span className="font-bold text-lg text-gray-900">
                 Total to pay
               </span>
               <span className="font-bold text-2xl text-black">
-                £{total.toFixed(2)}
+                ${total.toFixed(2)}
               </span>
             </div>
           </div>

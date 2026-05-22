@@ -8,7 +8,7 @@ export function trackViewContent(product: {
   window.ttq.track('ViewContent', {
     contents: [{ content_id: product.id, content_name: product.name, content_type: 'product', price: product.price }],
     value: product.price,
-    currency: 'GBP',
+    currency: 'USD',
   });
 }
 
@@ -23,7 +23,7 @@ export function trackAddToCart(product: {
   window.ttq.track('AddToCart', {
     contents: [{ content_id: product.id, content_name: product.name, content_type: 'product', quantity: product.quantity, price: product.price }],
     value: product.price * product.quantity,
-    currency: 'GBP',
+    currency: 'USD',
   });
 }
 
@@ -36,7 +36,7 @@ export function trackInitiateCheckout(cart: {
   window.ttq.track('InitiateCheckout', {
     contents: cart.items.map(i => ({ content_id: i.id, content_name: i.name, content_type: 'product', quantity: i.quantity, price: i.price })),
     value: cart.total,
-    currency: 'GBP',
+    currency: 'USD',
   });
 }
 
@@ -51,7 +51,7 @@ export function trackCompletePayment(order: {
   window.ttq.track('CompletePayment', {
     contents: order.items.map(i => ({ content_id: i.id, content_name: i.name, content_type: 'product', quantity: i.quantity, price: i.price })),
     value: order.total,
-    currency: 'GBP',
+    currency: 'USD',
   }, {
     event_id: order.orderId,
   });
