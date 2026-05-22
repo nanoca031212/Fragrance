@@ -83,7 +83,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       customer_email: customerEmail && customerEmail.trim() !== '' ? customerEmail : undefined, // Pre-fill email se fornecido
       return_url: `${origin}/checkout/return?session_id={CHECKOUT_SESSION_ID}`,
       shipping_address_collection: {
-        allowed_countries: ['GB'],
+        allowed_countries: ['US'],
       },
       phone_number_collection: {
         enabled: true,
