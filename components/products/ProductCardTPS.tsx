@@ -92,13 +92,23 @@ export default function ProductCardTPS({
 
   const hasDiscount = product.price.discount_percent > 0;
 
-  // Rating (placeholder - 4 de 5 estrelas)
-  const rating = 4;
+  const getStableValue = (seed: string, min: number, max: number, step = 1) => {
+    const hash = seed.split("").reduce((acc, char, index) => {
+      return acc + char.charCodeAt(0) * (index + 1);
+    }, 0);
+    const steps = Math.floor((max - min) / step);
+    return min + (hash % (steps + 1)) * step;
+  };
+
+  // Valores estaveis por produto para evitar variacao a cada render.
+  const stableSeed = `${product.id}-${product.handle}-${product.title}`;
+  const rating = getStableValue(`${stableSeed}-rating`, 4, 5, 0.1);
+  const purchases = getStableValue(`${stableSeed}-purchases`, 500, 1000);
   const renderStars = () => {
     return Array.from({ length: 5 }, (_, i) => (
       <Star
         key={i}
-        className={`h-3 w-3 ${i < rating ? "fill-black text-black" : "text-gray-300"}`}
+        className={`h-3 w-3 ${i < Math.round(rating) ? "fill-[#d89c10] text-[#d89c10]" : "text-[#d89c10]"}`}
       />
     ));
   };
@@ -431,9 +441,6 @@ export default function ProductCardTPS({
           )}
 
           {/* Promotional Banner */}
-          <div className="bg-white border border-black text-center font-bold text-xs py-1 px-2 mb-2">
-            Mix & match any 3 fragrances — £69.99 for all three
-          </div>
 
           {/* Badge - Canto superior direito */}
 
@@ -456,17 +463,16 @@ export default function ProductCardTPS({
         </div>
 
         {/* Linha decorativa */}
-        <div className="w-full h-px bg-black mb-3"></div>
 
         {/* Product Info - flex grow para empurrar botão para baixo */}
-        <div className="text-center space-y-2 flex flex-col  flex-grow">
+        <div className="text-center  flex flex-col  flex-grow">
           {/* Product Name - full title from folder name */}
           <h3 className="text-sm font-bold text-black leading-tight text-center px-1 truncate sm:whitespace-normal sm:overflow-visible w-full block">
             {product.title}
           </h3>
 
           {/* Product Type */}
-          <div className="text-xs font-thin text-black">
+          <div className="text-xs mt-1 font-thin text-black">
             {product.is_combo ? "Eau de Parfum Spray" : "Eau de Parfum Spray"} -
             100ML
           </div>
@@ -480,7 +486,7 @@ export default function ProductCardTPS({
             <div className="flex flex-col">
               <div className="flex  flex-col-2 items-center justify-center gap-2 text-sm">
                 <div>
-                  <span className="text-black uppercase text-lg font-semibold">
+                  <span className="text-black uppercase text-2xl mt-1 font-semibold">
                     £{formatPrice(product.price.regular)}
                   </span>
                 </div>
@@ -494,6 +500,10 @@ export default function ProductCardTPS({
             {product.featured && (
               <div className="text-xs text-gray-500">Sponsored</div>
             )}
+          </div>
+          <div className="mt-3 flex items-center justify-center gap-2 text-xs text-[#6b7280]">
+            <div className="flex items-center gap-0.5">{renderStars()}</div>
+            <span>({rating.toFixed(1)})</span>
           </div>
         </div>
       </CardWrapper>

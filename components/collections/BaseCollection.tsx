@@ -14,6 +14,7 @@ interface BaseCollectionProps {
   title: string;
   description: string;
   filterFunction?: (product: Product) => boolean;
+  showEntryAlert?: boolean;
 }
 
 export default function BaseCollection({
@@ -21,6 +22,7 @@ export default function BaseCollection({
   title,
   description,
   filterFunction,
+  showEntryAlert = false,
 }: BaseCollectionProps) {
   // Se houver uma função de filtro, aplica ela nos produtos iniciais
   const baseProducts = filterFunction
@@ -47,6 +49,7 @@ export default function BaseCollection({
   const lastScrollY = useRef(0);
   const collapseTimerRef = useRef<NodeJS.Timeout | null>(null);
   const didResetRef = useRef(false);
+  const didShowEntryAlertRef = useRef(false);
 
   // Reset bundle and cart every time the page mounts fresh (outside selection mode)
   useEffect(() => {
@@ -131,11 +134,29 @@ export default function BaseCollection({
         setRemaining(0);
         setSelectedCount(0);
         setSelectedImages([]);
-        setShowAlert(false);
+
+        if (
+          showEntryAlert &&
+          !isSelectionMode &&
+          !didShowEntryAlertRef.current
+        ) {
+          didShowEntryAlertRef.current = true;
+          setShowAlert(true);
+          setTimeout(() => setToastVisible(true), 10);
+
+          if (timeoutRef.current) clearTimeout(timeoutRef.current);
+          if (fadeTimeoutRef.current) clearTimeout(fadeTimeoutRef.current);
+
+          timeoutRef.current = setTimeout(() => {
+            setToastVisible(false);
+            fadeTimeoutRef.current = setTimeout(() => setShowAlert(false), 500);
+          }, 1000);
+        } else {
+          setShowAlert(false);
+        }
       }
     } catch (e) {}
   };
-
 
   useEffect(() => {
     calculateRemaining();

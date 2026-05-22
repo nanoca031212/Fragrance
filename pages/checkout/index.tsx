@@ -71,7 +71,13 @@ export default function CheckoutPage() {
 
   useEffect(() => {
     // Create a Checkout Session only when step is payment AND UTMs are loaded
-    if (items.length > 0 && !clientSecret && !loading && step === "payment" && utmLoaded) {
+    if (
+      items.length > 0 &&
+      !clientSecret &&
+      !loading &&
+      step === "payment" &&
+      utmLoaded
+    ) {
       setLoading(true);
       fetch("/api/stripe/create-checkout", {
         method: "POST",
@@ -367,7 +373,7 @@ export default function CheckoutPage() {
 
               <button
                 type="submit"
-                className="w-full bg-black text-white py-4 px-4 rounded-md hover:bg-gray-800 transition-colors font-bold text-lg mt-6 flex justify-center items-center gap-2"
+                className="w-full bg-black text-white py-4 px-4 rounded-2xl hover:bg-gray-800 transition-colors font-bold text-lg mt-6 flex justify-center items-center gap-2"
               >
                 <ShoppingBag className="w-6 h-6" />
                 View Order

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import {
   Search,
   User,
@@ -11,6 +12,7 @@ import {
   Gift,
 } from "lucide-react";
 import SearchBar from "@/components/search/SearchBar";
+import { useCart } from "@/contexts/CartContext";
 import { getAllProducts } from "@/lib/products";
 import { Product } from "@/types/product";
 
@@ -27,9 +29,16 @@ export default function HeaderTPS({
   hideMagentaBanner = false,
   sticky = false,
 }: HeaderTPSProps) {
+  const router = useRouter();
+  const { items, setIsOpen } = useCart();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [products, setProducts] = useState<Product[]>([]);
+  const isProductPage = router.pathname.startsWith("/products");
+  const isCheckoutPage = router.pathname.startsWith("/checkout");
+  const shouldHideSearchBar = isProductPage || isCheckoutPage;
+  const cartQuantity = items.reduce((total, item) => total + item.quantity, 0);
+  const shouldShowMixBanner = !isProductPage && cartQuantity === 1;
 
   useEffect(() => {
     setProducts(getAllProducts());
@@ -48,16 +57,18 @@ export default function HeaderTPS({
       className={`${sticky ? "sticky top-0 z-50" : "relative"} ${className}`}
     >
       {/* Promotional Banner */}
-      {!hidePromoBanner && (
-        <div className="bg-tps-red text-white text-center px-4 py-2 text-[15px] font-normal">
+      {!hidePromoBanner && !isCheckoutPage && (
+        <div className="bg-black  text-white text-center px-4 py-2 text-[15px] font-bold">
           Mix & match any 3 fragrances — £69.99 for all three
         </div>
       )}
 
       {/* Top Bar - Preta */}
-      <div className="bg-black text-white">
+      <div className="bg-white py-1 flex items-center justify-between px-2 text-white">
         <div className="container">
-          <div className="flex items-center justify-between h-16 pl-2">
+          <div
+            className={`flex items-center h-16 ${isCheckoutPage ? "justify-center" : "justify-between pl-2"}`}
+          >
             {/* Logo */}
             <Link
               href="/"
@@ -65,47 +76,58 @@ export default function HeaderTPS({
               suppressHydrationWarning
             >
               <img
-                src="/images/logo.avif"
+                src="/images/logo.webp"
                 alt="Logo"
-                width={210}
-                height={210}
+                width={260}
+                height={260}
               />
             </Link>
 
             {/* Icons direita */}
-            <div className="flex items-center space-x-3">
-              {/* Currency Icon - sempre visível */}
-              <img
-                src="/images/IconLibra.jpg"
-                alt="GBP"
-                width={30}
-                height={30}
-              />
-            </div>
+            {!isCheckoutPage && (
+              <div className="flex items-center space-x-3">
+                {/* Currency Icon - sempre visível */}
+                <button
+                  type="button"
+                  onClick={() => setIsOpen(true)}
+                  className="flex items-center"
+                  aria-label="Abrir carrinho"
+                >
+                  <img
+                    src="/images/IconLibra.svg"
+                    alt="GBP"
+                    width={30}
+                    height={30}
+                  />
+                </button>
+              </div>
+            )}
           </div>
         </div>
       </div>
 
       {/* Search Bar - Esticada horizontalmente */}
-      <div className="bg-black">
-        <div className="w-full p-1">
-          <div className="relative w-full max-w-none">
-            <button
-              onClick={() => setIsSearchOpen(true)}
-              className="w-full pl-6 pr-16 py-4 text-base border-0 rounded-lg
+      {!shouldHideSearchBar && (
+        <div className="bg-white pb-3">
+          <div className="w-full p-1">
+            <div className="flex  text-center justify-center border border-[#532450]  rounded-r-md w-full max-w-none">
+              <button
+                onClick={() => setIsSearchOpen(true)}
+                className="w-full pl-6 pr-16 py-2 text-base  rounded-lg
                        bg-gray-50 text-left text-gray-500"
-            >
-              Looking for something specific?
-            </button>
-            <div
-              className="absolute right-2 top-2 bottom-2 w-12 bg-tps-green text-white
-                         rounded-md flex items-center justify-center"
-            >
-              <Search className="h-5 w-5" />
+              >
+                Looking for something specific?
+              </button>
+              <div
+                className=" right-2 top-2 bottom-2 h-13 w-12 bg-[#532450] text-white
+                         rounded-r-md flex items-center justify-center"
+              >
+                <Search className="h-5 w-5" />
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      )}
 
       {/* Search Modal */}
       <SearchBar
@@ -115,8 +137,8 @@ export default function HeaderTPS({
       />
 
       {/* Navigation Tabs - Rosa/Magenta */}
-      {!hideMagentaBanner && (
-        <div className="bg-tps-magenta">
+      {!hideMagentaBanner && !isCheckoutPage && (
+        <div className="bg-[#532450]">
           <div className="container mx-auto">
             <nav className="flex overflow-x-auto scrollbar-none">
               {/* Men's Collection */}
@@ -220,6 +242,13 @@ export default function HeaderTPS({
               <p className="text-sm font-medium text-gray-900">0800 123 4567</p>
             </div>
           </nav>
+        </div>
+      )}
+      {shouldShowMixBanner && (
+        <div
+          className={`bg-white border border-black text-center font-bold text-md py-1 px-2 mx-1 ${isCheckoutPage ? "my-2" : "mt-2"}`}
+        >
+          Mix & match any 3 fragrances £69.99 for all three
         </div>
       )}
     </header>

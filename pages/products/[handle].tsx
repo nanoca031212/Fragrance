@@ -191,9 +191,9 @@ export default function ProductPage({
         </div>
 
         {/* Brand Header */}
-        <div className="bg-black text-white w-full">
-          <h2 className="text-xl p-2 font-light font-montserrat tracking-wider text-center">
-            MULTI-BRAND
+        <div className=" text-black w-full">
+          <h2 className="text-2xl p-2  font-bold tracking-wider text-center">
+            {product.title}
           </h2>
         </div>
 
@@ -272,7 +272,7 @@ export default function ProductPage({
               <h2 className="text-[22px] leading-none font-bold text-black mb-2">
                 {product.title}
               </h2>
-              <p className="text-black font-medium">Eau de Parfum Spray</p>
+
               <div className="flex flex-wrap items-center gap-2 text-[13px] text-[#666666] mb-4">
                 <div className="flex items-center gap-2 whitespace-nowrap">
                   <span>Product code: {product.sku}</span>
@@ -287,8 +287,8 @@ export default function ProductPage({
             </div>
 
             {/* Discount Banner */}
-            <div className="border border-black w-full font-bold text-center py-2 mb-4">
-              <span className="font-bold  text-black">
+            <div className="bg-[#532450] text-white w-[calc(100%+2rem)] -mx-4 sm:w-full sm:mx-0 font-medium text-center py-2 mb-4">
+              <span className="font-bold  text-white">
                 Pick any 3 fragrances you love for only £69.99
               </span>
             </div>
