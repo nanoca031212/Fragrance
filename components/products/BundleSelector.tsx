@@ -16,8 +16,8 @@ export interface BundleSelection {
   totalPrice: number;
 }
 
-const TRIO_PRICE = 69.99;
-const HEXA_PRICE = 119.99;
+const TRIO_PRICE = 99.99;
+const HEXA_PRICE = 179.99;
 
 export default function BundleSelector({
   currentProduct,

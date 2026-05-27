@@ -289,7 +289,7 @@ export default function ProductPage({
             {/* Discount Banner */}
             <div className="bg-[#532450] text-white w-[calc(100%+2rem)] -mx-4 sm:w-full sm:mx-0 font-medium text-center py-2 mb-4">
               <span className="font-bold  text-white">
-                Pick any 3 fragrances you love for only $69.99
+                Pick any 3 fragrances you love for only $99.99
               </span>
             </div>
 

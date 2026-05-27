@@ -320,22 +320,22 @@ export default function ProductCardTPS({
           itemPrice = regularPrice;
           itemOriginalPrice = originalPrice;
         } else if (count === 3) {
-          itemPrice = 69.99 / 3;
+          itemPrice = 99.99 / 3;
           itemOriginalPrice = regularPrice;
         } else if (count >= 4 && count < 6) {
           if (i < 3) {
-            itemPrice = 69.99 / 3;
+            itemPrice = 99.99 / 3;
             itemOriginalPrice = regularPrice;
           } else {
             itemPrice = regularPrice;
             itemOriginalPrice = originalPrice;
           }
         } else if (count === 6) {
-          itemPrice = 119.99 / 6;
+          itemPrice = 179.99 / 6;
           itemOriginalPrice = regularPrice;
         } else {
           // 7+ units: first 6 at bundle price, rest at full price
-          itemPrice = i < 6 ? 119.99 / 6 : regularPrice;
+          itemPrice = i < 6 ? 179.99 / 6 : regularPrice;
           itemOriginalPrice = i < 6 ? regularPrice : originalPrice;
         }
 
