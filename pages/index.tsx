@@ -13,7 +13,6 @@ export default function Home({ products }: HomeProps) {
       products={products}
       title="Premium Fragrance Collections | $99.99 Each"
       description="Shop premium fragrance collections from top brands. All combos $99.99 with fast UK delivery."
-      showEntryAlert={true}
     />
   );
 }
