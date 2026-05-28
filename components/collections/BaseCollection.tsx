@@ -14,7 +14,6 @@ interface BaseCollectionProps {
   title: string;
   description: string;
   filterFunction?: (product: Product) => boolean;
-  showEntryAlert?: boolean;
 }
 
 export default function BaseCollection({
@@ -22,7 +21,6 @@ export default function BaseCollection({
   title,
   description,
   filterFunction,
-  showEntryAlert = false,
 }: BaseCollectionProps) {
   // Se houver uma função de filtro, aplica ela nos produtos iniciais
   const baseProducts = filterFunction
@@ -49,7 +47,6 @@ export default function BaseCollection({
   const lastScrollY = useRef(0);
   const collapseTimerRef = useRef<NodeJS.Timeout | null>(null);
   const didResetRef = useRef(false);
-  const didShowEntryAlertRef = useRef(false);
 
   // Reset bundle and cart every time the page mounts fresh (outside selection mode)
   useEffect(() => {
@@ -134,26 +131,7 @@ export default function BaseCollection({
         setRemaining(0);
         setSelectedCount(0);
         setSelectedImages([]);
-
-        if (
-          showEntryAlert &&
-          !isSelectionMode &&
-          !didShowEntryAlertRef.current
-        ) {
-          didShowEntryAlertRef.current = true;
-          setShowAlert(true);
-          setTimeout(() => setToastVisible(true), 10);
-
-          if (timeoutRef.current) clearTimeout(timeoutRef.current);
-          if (fadeTimeoutRef.current) clearTimeout(fadeTimeoutRef.current);
-
-          timeoutRef.current = setTimeout(() => {
-            setToastVisible(false);
-            fadeTimeoutRef.current = setTimeout(() => setShowAlert(false), 500);
-          }, 1000);
-        } else {
-          setShowAlert(false);
-        }
+        setShowAlert(false);
       }
     } catch (e) {}
   };
@@ -421,13 +399,13 @@ export default function BaseCollection({
                   ? "Continue adicionando!"
                   : selectedCount === 3
                     ? "🎉 Discount Unlocked!"
-                    : "Mix & match — 3 perfumes por $99.99"}
+                    : "Mix & match — 3 perfumes por £99.99"}
             </h5>
             <div className="text-sm text-gray-500 mt-1">
               {selectedCount < 3
-                ? `${3 - selectedCount} perfumes missing. Unlock the discount.`
+                ? `Buy any ${3 - selectedCount} fragrances for just $99.99 and get the 3rd FREE`
                 : selectedCount === 3
-                  ? `Congratulations, you've unlocked the discount 3 perfumes for $99.99. Select more 3 perfumes to unlock the maximum discount.`
+                  ? `Congratulations, you've unlocked the discount 3 perfumes for £179.99. Select more 3 perfumes to unlock the maximum discount.`
                   : selectedCount < 6
                     ? `${6 - selectedCount} more perfume(s) to unlock the maximum discount.`
                     : `Congratulations, you've unlocked the maximum discount!`}

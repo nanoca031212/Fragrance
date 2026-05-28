@@ -58,8 +58,8 @@ export default function HeaderTPS({
     >
       {/* Promotional Banner */}
       {!hidePromoBanner && !isCheckoutPage && (
-        <div className="bg-black  text-white text-center px-4 py-2 text-[15px] font-bold">
-          Mix & match any 3 fragrances — $99.99 for all three
+        <div className="bg-black  text-white text-center px-2 py-2 text-[13px] font-bold">
+          Summer deal buy 2 fragrances for $99.99 & get the 3rd FREE
         </div>
       )}
 
