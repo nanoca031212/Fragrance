@@ -9,7 +9,8 @@ interface MensPageProps {
 
 export default function MensPage({ products }: MensPageProps) {
   return (
-    <BaseCollection 
+    <BaseCollection
+      key="mens"
       products={products}
       title="Men's Perfume | Premium Fragrance Collections"
       description="Shop our exclusive men's perfume collections. Premium fragrances at $79.90 with fast UK delivery."

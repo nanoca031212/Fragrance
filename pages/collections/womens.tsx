@@ -9,7 +9,8 @@ interface WomensPageProps {
 
 export default function WomensPage({ products }: WomensPageProps) {
   return (
-    <BaseCollection 
+    <BaseCollection
+      key="womens"
       products={products}
       title="Women's Perfume | Premium Fragrance Collections"
       description="Shop our exclusive women's perfume collections. Premium fragrances at $79.90 with fast UK delivery."

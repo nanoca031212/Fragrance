@@ -141,6 +141,15 @@ export default function HeaderTPS({
         <div className="bg-[#532450]">
           <div className="container mx-auto">
             <nav className="flex overflow-x-auto scrollbar-none">
+              {/* Special Offers */}
+              <Link
+                href="/"
+                className="flex-shrink-0 px-6 py-4 text-white text-sm font-medium uppercase tracking-wider
+                       hover:bg-white hover:bg-opacity-10 transition-colors whitespace-nowrap"
+                suppressHydrationWarning
+              >
+                SPECIAL OFFERS
+              </Link>
               {/* Men's Collection */}
               <Link
                 href="/collections/mens"
@@ -159,26 +168,6 @@ export default function HeaderTPS({
                 suppressHydrationWarning
               >
                 WOMEN'S
-              </Link>
-
-              {/* Gift Sets */}
-              <Link
-                href="/collections/gift-sets"
-                className="flex-shrink-0 px-6 py-4 text-white text-sm font-medium uppercase tracking-wider
-                       hover:bg-white hover:bg-opacity-10 transition-colors whitespace-nowrap"
-                suppressHydrationWarning
-              >
-                GIFT SETS
-              </Link>
-
-              {/* Special Offers */}
-              <Link
-                href="/"
-                className="flex-shrink-0 px-6 py-4 text-white text-sm font-medium uppercase tracking-wider
-                       hover:bg-white hover:bg-opacity-10 transition-colors whitespace-nowrap"
-                suppressHydrationWarning
-              >
-                SPECIAL OFFERS
               </Link>
             </nav>
           </div>

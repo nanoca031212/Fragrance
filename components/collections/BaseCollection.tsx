@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useMemo } from "react";
 import { useRouter } from "next/router";
 import { Info } from "lucide-react";
 import { Product } from "@/types/product";
@@ -22,10 +22,10 @@ export default function BaseCollection({
   description,
   filterFunction,
 }: BaseCollectionProps) {
-  // Se houver uma função de filtro, aplica ela nos produtos iniciais
-  const baseProducts = filterFunction
-    ? initialProducts.filter(filterFunction)
-    : initialProducts;
+  const baseProducts = useMemo(
+    () => filterFunction ? initialProducts.filter(filterFunction) : initialProducts,
+    [initialProducts, filterFunction]
+  );
   const [products, setProducts] = useState(baseProducts);
 
   const router = useRouter();
